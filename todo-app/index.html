@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Manager</h1>
+        </header>
+
+        <div class="task-form">
+            <form id="task-form">
+                <div class="form-group">
+                    <input type="text" id="task-title" placeholder="Task title" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="task-description" placeholder="Task description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Deadline:</label>
+                    <input type="datetime-local" id="task-deadline">
+                </div>
+                <div class="form-group">
+                    <select id="task-priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submit-btn">Add Task</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="filter-controls">
+            <div class="search-container">
+                <input type="text" id="search-tasks" placeholder="Search tasks...">
+            </div>
+            <div class="filter-container">
+                <select id="filter-priority">
+                    <option value="all">All Priorities</option>
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <select id="filter-status">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <h2>Your Tasks</h2>
+            <div id="tasks-list"></div>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="task-template">
+        <div class="task-item" data-id="">
+            <div class="task-header">
+                <h3 class="task-title"></h3>
+                <div class="task-actions">
+                    <button class="complete-btn"><i class="fas fa-check"></i></button>
+                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="task-body">
+                <p class="task-description"></p>
+                <div class="task-meta">
+                    <span class="task-deadline"></span>
+                    <span class="task-priority"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modal for editing tasks -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Task</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-task-id">
+                <div class="form-group">
+                    <input type="text" id="edit-title" placeholder="Task title" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="edit-description" placeholder="Task description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-deadline">Deadline:</label>
+                    <input type="datetime-local" id="edit-deadline">
+                </div>
+                <div class="form-group">
+                    <select id="edit-priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="edit-submit-btn">Update Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html> 
